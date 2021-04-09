@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+//components
+import Banner from './components/Banner';
+
+//redux
+import store from './redux/store';
+import { 
+  Provider as ReduxStoreProvider,
+} from 'react-redux';
+
+//MUI
+import {
+  ThemeProvider as MuiThemeProvider,
+  createMuiTheme,
+} from '@material-ui/core/styles';
+import { muiTheme } from './utilities/muitheme';
+
+//MUI theme defination
+const theme = createMuiTheme(muiTheme);
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ReduxStoreProvider
+    store={store}
+    >
+      <MuiThemeProvider
+      theme={theme}
+      >
+        <Banner />
+      </MuiThemeProvider>
+    </ReduxStoreProvider>
   );
 }
 
