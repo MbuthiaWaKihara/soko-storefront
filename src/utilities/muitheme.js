@@ -5,12 +5,13 @@ export const muiTheme = {
         main: '#2766cc',
         light: '#ffffff',
         dark: '#dd655e',
+        contrastText: '#ffffff',
       },
       secondary: {
         main: '#dd655e',
         light: '#ffffff',
         dark: '#e42f24',
-        contrastText: '#ffffff',
+        contrastText: '#666666',
       },
       background: {
         default: '#ffffff',

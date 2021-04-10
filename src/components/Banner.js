@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        marginLeft: '10%',
         [theme.breakpoints.down('sm')]: {
             display: 'none',
         }
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
     playstoreLinkContaier: {
         position: 'absolute',
-        right: 20,
+        right: '20%',
         [theme.breakpoints.down('sm')]: {
             position: 'relative',
             right: 0,
@@ -72,6 +73,8 @@ const Banner = () => {
                         Create your own Online Shop. Get 
                         <a 
                         href="https://play.google.com/store/apps/details?id=com.soko.sokomerchant"
+                        target="_blank"
+                        rel="noreferrer"
                         className={classes.playstoreLink}
                         >SokoApp</a> 
                         Now!

@@ -1,0 +1,66 @@
+/**
+ * small screen bottom navigation
+ */
+
+import React from 'react';
+
+//react router dom
+import { useHistory, useLocation } from 'react-router-dom';
+
+//MUI
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+
+//MUI icons
+import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        position: 'absolute',
+        bottom: 0,
+        elevation: 100,
+        width: '100%',
+        backgroundColor: '#ebebeb',
+        [theme.breakpoints.up('lg')]: {
+            display: 'none',
+        }
+    },
+    icon: {
+        color: theme.palette.secondary.contrastText,
+    }
+}));
+
+const BottomNav = () => {
+    const classes = useStyles();
+    const location = useLocation();
+    const history = useHistory();
+
+    const [activeTab, setActiveTab] = React.useState('home');
+
+    const handleChange = (_, value) => {
+        setActiveTab(value);
+        if(value === 'home' && location.pathname !== '') {
+            history.push('/');
+            return;
+        }
+
+        if(!location.pathname.startsWith(`/${value}`)){
+            history.push(`/${value}`);
+            return;
+        }
+    }
+    return (
+        <>
+            <BottomNavigation value={activeTab} onChange={handleChange} className={classes.root}>
+                <BottomNavigationAction label="Home" value="home" icon={<HomeOutlinedIcon className={classes.icon}/>} />
+                <BottomNavigationAction label="Bag" value="bag" icon={<LocalMallOutlinedIcon className={classes.icon}/>} />
+                <BottomNavigationAction label="Account" value="account" icon={<AccountCircleOutlinedIcon className={classes.icon}/>} />
+            </BottomNavigation>
+        </>
+    )
+}
+
+export default BottomNav;
