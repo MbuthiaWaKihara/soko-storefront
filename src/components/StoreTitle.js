@@ -114,8 +114,11 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'center',
         cursor: 'pointer',
-        height: '100%',
+        height: '60%',
+        width: '30%',
+        borderRadius: 50,
     },
     linkDescription: {
         color: theme.palette.secondary.contrastText,
@@ -126,6 +129,7 @@ const useStyles = makeStyles(theme => ({
     navIcon: {
         fontSize: '2em',
         marginRight: '10%',
+        color: theme.palette.secondary.contrastText,
     }
 }));
 
@@ -192,6 +196,9 @@ const StoreTitle = ({
                     <div
                     className={classes.linkContainer}
                     onClick={() => routeToPage('bag')}
+                    style={{
+                        backgroundColor: location.pathname.startsWith('/bag') ? '#E9EFF9': null,
+                    }}
                     >
                         <LocalMallOutlinedIcon 
                         className={classes.navIcon}
@@ -214,6 +221,7 @@ const StoreTitle = ({
                     onClick={() => routeToPage('account')}
                     style={{
                         marginLeft: '10%',
+                        backgroundColor: location.pathname.startsWith('/account') ? '#E9EFF9': null,
                     }}
                     >
                         <AccountCircleOutlinedIcon 

@@ -1,3 +1,7 @@
+/**
+ * @author Mbuthia Kihara
+ */
+
 import './App.css';
 
 //pages
