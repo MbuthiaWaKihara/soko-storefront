@@ -20,6 +20,7 @@ import {
 import Banner from './components/Banner';
 import StoreTitle from './components/StoreTitle';
 import BottomNav from './components/BottomNav';
+import Footer from './components/Footer';
 
 //redux
 import store from './redux/store';
@@ -55,6 +56,7 @@ const App = () => {
             <Route path="/bag" exact render={props => <BagPage {...props} />}/>
             <Route path="/account" exact render={props => <AccountPage {...props} />}/>
           </Switch>
+          <Footer />
         </MuiThemeProvider>
       </ReduxStoreProvider>
     </Router>

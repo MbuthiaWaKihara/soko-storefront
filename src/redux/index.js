@@ -3,3 +3,4 @@
  */
 
 export * from './test/actions';
+export * from './store/actions';

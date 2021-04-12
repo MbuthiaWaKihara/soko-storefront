@@ -3,13 +3,13 @@ export const muiTheme = {
       type: 'light',
       primary: {
         main: '#2766cc',
-        light: '#ffffff',
+        light: '#ECF2FB',
         dark: '#dd655e',
         contrastText: '#ffffff',
       },
       secondary: {
         main: '#dd655e',
-        light: '#ffffff',
+        light: '#F8DE4B',
         dark: '#e42f24',
         contrastText: '#666666',
       },
