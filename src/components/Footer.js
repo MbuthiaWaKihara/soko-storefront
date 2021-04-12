@@ -13,6 +13,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 
+
 const useStyles = makeStyles(theme => ({
     footerBanner: {
         backgroundColor: theme.palette.primary.main,
@@ -43,6 +44,9 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        [theme.breakpoints.down('md')]: {
+            marginBottom: '15%',
+        }
     },
     whatsAppIconContainer: {
         display: 'flex',

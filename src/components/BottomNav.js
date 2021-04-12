@@ -19,9 +19,9 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        position: 'absolute',
+        position: 'fixed',
         bottom: 0,
-        elevation: 100,
+        zIndex: 1000,
         width: '100%',
         backgroundColor: '#ebebeb',
         [theme.breakpoints.up('lg')]: {

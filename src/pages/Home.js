@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 
 //components
 import ListViewCategories from '../components/ListViewCategories';
+import ProductsInCategory from '../components/ProductsInCategory';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     productsContainer: {
         borderTop: `1px solid ${theme.palette.divider}`,
         borderRight: `1px solid ${theme.palette.divider}`,
+        padding: '1%',
     },
     bagPreviewContainer: {
         borderTop: `1px solid ${theme.palette.divider}`,
@@ -40,7 +42,8 @@ const Home = () => {
             className={classes.root}
             >
                 <Grid
-                lg={3}
+                item
+                lg={2}
                 md={12}
                 sm={12}
                 xs={12}
@@ -53,17 +56,18 @@ const Home = () => {
                     }
                 </Grid>
                 <Grid
-                lg={5}
+                item
+                lg={7}
                 md={12}
                 sm={12}
                 xs={12}
                 className={classes.productsContainer}
                 >
-                    <p>products here</p>
+                    <ProductsInCategory />
                 </Grid>
                 <Grid
+                item
                 lg={3}
-                md={12}
                 sm={12}
                 xs={12}
                 className={classes.bagPreviewContainer}
