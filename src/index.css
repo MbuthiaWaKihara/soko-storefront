@@ -8,9 +8,9 @@ body {
 }
 
 html {
-  scrollbar-color: #888 #555;
+  scrollbar-color: #f1f1f1 #555;
   scrollbar-width: thin;
-  scrollbar-track-color: #f1f1f1;
+  scrollbar-track-color: #ffffff;
 }
 
 code {
@@ -28,7 +28,6 @@ code {
 
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 10%;
 }
 
 ::-webkit-scrollbar-thumb:hover {

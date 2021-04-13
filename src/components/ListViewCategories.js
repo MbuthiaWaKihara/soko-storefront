@@ -66,7 +66,7 @@ const ListViewCategories = ({
                 {
                     ohnestInvestmentsStore.categories.map(category => (
                         <div 
-                        key={category.name}
+                        key={category.id}
                         className={classes.categoryContainer}
                         onClick={() => selectCategory(category)}
                         style={{

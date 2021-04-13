@@ -8,6 +8,7 @@ import './App.css';
 import HomePage from './pages/Home';
 import AccountPage from './pages/Account';
 import BagPage from './pages/Bag';
+import ProductPage from './pages/Product';
 
 //react router
 import {
@@ -55,6 +56,7 @@ const App = () => {
             <Route path="/" exact render={props => <HomePage {...props} />}/>
             <Route path="/bag" exact render={props => <BagPage {...props} />}/>
             <Route path="/account" exact render={props => <AccountPage {...props} />}/>
+            <Route path="/products/:product_id" exact render={props => <ProductPage {...props} />}/>
           </Switch>
           <Footer />
         </MuiThemeProvider>

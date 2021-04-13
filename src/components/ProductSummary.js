@@ -1,5 +1,8 @@
 import React from 'react';
 
+//router
+import { useHistory } from 'react-router-dom'
+
 //MUI
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +10,10 @@ import Button from '@material-ui/core/Button';
 
 //icons
 import AddIcon from '@material-ui/icons/Add';
+
+//redux
+import { connect } from 'react-redux';
+import { setSelectedProduct } from '../redux';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -41,6 +48,7 @@ const useStyles = makeStyles(theme => ({
         borderBottomRightRadius: 10,
         backgroundColor: '#DD655E',
         color: theme.palette.primary.contrastText,
+        fontWeight: 'bold',
     },
     productDetailsContainer: {
         display: 'flex',
@@ -63,15 +71,46 @@ const useStyles = makeStyles(theme => ({
     addButton: {
         color: theme.palette.primary.main,
         borderColor: theme.palette.primary.main,
-        marginRight: 10,
     },
+    productActions: {
+        marginRight: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    seeMore: {
+        color: theme.palette.primary.main,
+        cursor: 'pointer',
+        marginBottom: 10,
+        '&:hover': {
+            textDecoration: 'underline',
+        }
+    }
 }));
 
+
+const mapDispatchToProps = dispatch => ({
+    setSelectedProduct: product => dispatch(setSelectedProduct(product)),
+});
+
 const ProductSummary = ({
-    product
+    product, openProductBackdrop, setSelectedProduct,
 }) => {
     
     const classes = useStyles();
+    const history = useHistory();
+
+    const clickProduct = () => {
+        setSelectedProduct(product);
+        openProductBackdrop();
+    }
+
+    const seeMore = () => {
+        setSelectedProduct(product);
+        history.push(`/products/${product.id}`);
+    }
+
     return (
         <>
             <div
@@ -84,13 +123,14 @@ const ProductSummary = ({
                     src={product.images[0]}
                     alt={product.name}
                     className={classes.image}
+                    onClick={clickProduct}
                     />
                     {
                     product.discount_price &&
                     <div
                     className={classes.discountTag}
                     >
-                        {Math.floor(((product.price - product.discount_price) * 100)/ product.price)}%
+                        -{Math.floor(((product.price - product.discount_price) * 100)/ product.price)}%
                     </div>
                 }
                 </div>
@@ -118,15 +158,29 @@ const ProductSummary = ({
                         </Typography>
                     }
                 </div>
-                <Button
-                className={classes.addButton}
-                variant="outlined"
+                <div
+                className={classes.productActions}
                 >
-                    <AddIcon /> Add
-                </Button>
+                    <Typography
+                    variant="body2"
+                    className={classes.seeMore}
+                    onClick={seeMore}
+                    >
+                        see more
+                    </Typography>
+                    <Button
+                    className={classes.addButton}
+                    variant="outlined"
+                    >
+                        <AddIcon /> Add
+                    </Button>
+                </div>
             </div>
         </>
     )
 }
 
-export default ProductSummary;;
+export default connect(
+    null,
+    mapDispatchToProps,
+)(ProductSummary);

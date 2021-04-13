@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 
 //components
 import ListViewCategories from '../components/ListViewCategories';
+import GridViewCategories from '../components/GridViewCategories';
 import ProductsInCategory from '../components/ProductsInCategory';
 
 const useStyles = makeStyles(theme => ({
@@ -43,25 +44,31 @@ const Home = () => {
             >
                 <Grid
                 item
-                lg={2}
+                lg={3}
                 md={12}
                 sm={12}
                 xs={12}
                 className={classes.categoriesContainer}
+                style={{
+                    borderWidth: match ? 0 : null,
+                }}
                 >
                     {
                         match ? 
-                        <p>Grid view categories</p> :
+                        <GridViewCategories /> :
                         <ListViewCategories />
                     }
                 </Grid>
                 <Grid
                 item
-                lg={7}
+                lg={6}
                 md={12}
                 sm={12}
                 xs={12}
                 className={classes.productsContainer}
+                style={{
+                    borderWidth: match ? 0 : null,
+                }}
                 >
                     <ProductsInCategory />
                 </Grid>

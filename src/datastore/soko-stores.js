@@ -62,10 +62,12 @@ export const ohnestInvestmentsStore = {
     image_url: OhnestLogo,
     categories: [
         {
+            id: 'c1',
             name: 'Cups',
             image_url: cup1,
             products: [
                 {
+                    id: 'p1',
                     name: 'Floating Cup (white)',
                     description: '',
                     images: [cup1],
@@ -73,12 +75,14 @@ export const ohnestInvestmentsStore = {
                     discount_price: 400,
                 },
                 {
+                    id: 'p2',
                     name: 'Modern Ceramic Cup',
                     description: '',
                     images: [cup2],
                     price: 100,
                 },
                 {
+                    id: 'p3',
                     name: 'Le Gucci',
                     description: '',
                     images: [cup3],
@@ -86,12 +90,14 @@ export const ohnestInvestmentsStore = {
                     discount_price: 200,
                 },
                 {
+                    id: 'p4',
                     name: 'Timber Old School',
                     description: '',
                     images: [cup4],
                     price: 1000,
                 },
                 {
+                    id: 'p5',
                     name: 'Genius Tea Cup',
                     description: '',
                     images: [cup5],
@@ -100,10 +106,12 @@ export const ohnestInvestmentsStore = {
             ]
         },
         {
+            id: 'c2',
             name: 'Cookware',
             image_url: cookware1,
             products: [
                 {
+                    id: 'p6',
                     name: 'New Dessinni Non Stick',
                     description: '',
                     images: [cookware1],
@@ -111,12 +119,14 @@ export const ohnestInvestmentsStore = {
                     discount_price: 7000,
                 },
                 {
+                    id: 'p7',
                     name: 'Matrix Kitchen Set',
                     description: '',
                     images: [cookware2],
                     price: 5000,
                 },
                 {
+                    id: 'p8',
                     name: 'Panther Kitchen Set',
                     description: '',
                     images: [cookware3],
@@ -124,6 +134,7 @@ export const ohnestInvestmentsStore = {
                     discount_price: 5000,
                 },
                 {
+                    id: 'p9',
                     name: 'Tycoon Non Stick',
                     description: '',
                     images: [cookware4],
@@ -131,18 +142,21 @@ export const ohnestInvestmentsStore = {
                     discount_price: 9500,
                 },
                 {
+                    id: 'p10',
                     name: 'GoldTimes Kitchen Set',
                     description: '',
                     images: [cookware5],
                     price: 5000,
                 },
                 {
+                    id: 'p11',
                     name: 'New Matrix Set',
                     description: '',
                     images: [cookware6],
                     price: 8000,
                 },
                 {
+                    id: 'p12',
                     name: 'Old Dessinni Set',
                     description: '',
                     images: [cookware7],
@@ -152,10 +166,12 @@ export const ohnestInvestmentsStore = {
             ]
         }, 
         {
+            id: 'c3',
             name: 'Flasks',
             image_url: flask1,
             products: [
                 {
+                    id: 'p13',
                     name: 'Royalty Non Breakable',
                     description: '',
                     images: [flask1],
@@ -163,6 +179,7 @@ export const ohnestInvestmentsStore = {
                     discount_price: 1100,
                 },
                 {
+                    id: 'p14',
                     name: 'Travel Flask',
                     description: '',
                     images: [flask2],
@@ -170,24 +187,28 @@ export const ohnestInvestmentsStore = {
                     discount_price: 800,
                 },
                 {
+                    id: 'p15',
                     name: 'Wuhan 3L',
                     description: '',
                     images: [flask3],
                     price: 3000,
                 },
                 {
+                    id: 'p16',
                     name: 'Captain Flask',
                     description: '',
                     images: [flask4],
                     price: 1000,
                 },
                 {
+                    id: 'p17',
                     name: 'Caramel Guest Dispenser',
                     description: '',
                     images: [flask5],
                     price: 2500,
                 },
                 {
+                    id: 'p18',
                     name: 'Vogue Thermos',
                     description: '',
                     images: [flask6],
@@ -197,10 +218,12 @@ export const ohnestInvestmentsStore = {
             ]
         },
         {
+            id: 'c4',
             name: 'Foot wear',
             image_url: footwear1,
             products: [
                 {
+                    id: 'p19',
                     name: 'Riley Sandals',
                     description: '',
                     images: [footwear1],
@@ -208,6 +231,7 @@ export const ohnestInvestmentsStore = {
                     discount_price: 800,
                 }, 
                 {
+                    id: 'p20',
                     name: 'Foot Mittens Blue',
                     description: '',
                     images: [footwear2],
@@ -215,18 +239,21 @@ export const ohnestInvestmentsStore = {
                     discount_price: 800,
                 }, 
                 {
+                    id: 'p21',
                     name: 'Lady Birds',
                     description: '',
                     images: [footwear3],
                     price: 800,
                 }, 
                 {
+                    id: 'p22',
                     name: 'Classic Addidas',
                     description: '',
                     images: [footwear4],
                     price: 250,
                 }, 
                 {
+                    id: 'p23',
                     name: 'Checker Brown',
                     description: '',
                     images: [footwear5],
@@ -234,6 +261,7 @@ export const ohnestInvestmentsStore = {
                     discount_price: 250,
                 }, 
                 {
+                    id: 'p24',
                     name: 'Indoor Panda',
                     description: '',
                     images: [footwear6],
@@ -241,12 +269,14 @@ export const ohnestInvestmentsStore = {
                     discount_price: 500,
                 }, 
                 {
+                    id: 'p25',
                     name: 'Sacred Sheep',
                     description: '',
                     images: [footwear7],
                     price: 500,
                 }, 
                 {
+                    id: 'p26',
                     name: 'Fluffy Me',
                     description: '',
                     images: [footwear8],
@@ -254,6 +284,7 @@ export const ohnestInvestmentsStore = {
                     discount_price: 800,
                 }, 
                 {
+                    id: 'p27',
                     name: 'Lady Fluffy',
                     description: '',
                     images: [footwear9],
@@ -261,6 +292,7 @@ export const ohnestInvestmentsStore = {
                     discount_price: 200,
                 }, 
                 {
+                    id: 'p28',
                     name: 'Sandals Sure',
                     description: '',
                     images: [footwear10],
@@ -269,10 +301,12 @@ export const ohnestInvestmentsStore = {
             ]
         },
         {
+            id: 'c5',
             name: 'Drinking Glasses',
             image_url: glass1,
             products: [
                 {
+                    id: 'p29',
                     name: 'Beer Deco',
                     description: '',
                     images: [glass1],
@@ -280,30 +314,35 @@ export const ohnestInvestmentsStore = {
                     discount_price: 80,
                 }, 
                 {
+                    id: 'p30',
                     name: 'Beer Long Tumbler',
                     description: '',
                     images: [glass2],
                     price: 100,
                 }, 
                 {
+                    id: 'p31',
                     name: 'Beer Short Deco',
                     description: '',
                     images: [glass3],
                     price: 100,
                 }, 
                 {
+                    id: 'p32',
                     name: 'Beer Wide Rim',
                     description: '',
                     images: [glass4],
                     price: 100,
                 }, 
                 {
+                    id: 'p33',
                     name: 'Wine Classic',
                     description: '',
                     images: [glass5],
                     price: 150,
                 }, 
                 {
+                    id: 'p34',
                     name: 'Tea Glass',
                     description: '',
                     images: [glass6],
@@ -311,6 +350,7 @@ export const ohnestInvestmentsStore = {
                     discount_price: 120,
                 }, 
                 {
+                    id: 'p35',
                     name: 'Crystal Glass',
                     description: '',
                     images: [glass7],
@@ -319,10 +359,12 @@ export const ohnestInvestmentsStore = {
             ]
         },
         {
+            id: 'c6',
             name: 'Plates',
             image_url: plate1,
             products: [
                 {
+                    id: 'p36',
                     name: 'Luminarc Black',
                     description: '',
                     images: [plate1],
@@ -330,6 +372,7 @@ export const ohnestInvestmentsStore = {
                     discount_price: 250,
                 },
                 {
+                    id: 'p37',
                     name: 'Luminarc White',
                     description: '',
                     images: [plate2],
@@ -337,18 +380,21 @@ export const ohnestInvestmentsStore = {
                     discount_price: 250,
                 },  
                 {
+                    id: 'p38',
                     name: 'Sundabests White',
                     description: '',
                     images: [plate3],
                     price: 200,
                 }, 
                 {
+                    id: 'p39',
                     name: 'Illusion (Fish)',
                     description: '',
                     images: [plate4],
                     price: 500,
                 }, 
                 {
+                    id: 'p40',
                     name: 'Modern Kaulo',
                     description: '',
                     images: [plate5],
