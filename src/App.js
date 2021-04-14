@@ -3,6 +3,7 @@
  */
 
 import './App.css';
+import { Toaster } from 'react-hot-toast';
 
 //pages
 import HomePage from './pages/Home';
@@ -41,6 +42,8 @@ const theme = createMuiTheme(muiTheme);
 
 const App = () => {
   return (
+    <>
+    <Toaster />
     <Router
     >
       <ReduxStoreProvider
@@ -62,6 +65,7 @@ const App = () => {
         </MuiThemeProvider>
       </ReduxStoreProvider>
     </Router>
+    </>
   );
 }
 

@@ -26,6 +26,11 @@ import storeNoImage from '../images/store-no-image.jpg';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 import useTheme from '@material-ui/core/styles/useTheme';
+import Badge from '@material-ui/core/Badge';
+
+const mapStateToProps = state => ({
+    bagProducts: state.bag.products,
+})
 
 const mapDispatchToProps = dispatch => ({
     fetchStoreDetails: () => dispatch(fetchStoreDetails()),
@@ -130,11 +135,13 @@ const useStyles = makeStyles(theme => ({
         fontSize: '2em',
         marginRight: '10%',
         color: theme.palette.secondary.contrastText,
+    },
+    badge: {
     }
 }));
 
 const StoreTitle = ({
-    fetchStoreDetails,
+    fetchStoreDetails, bagProducts
 }) => {
     
     //on mount simulate fetching of store details
@@ -200,12 +207,18 @@ const StoreTitle = ({
                         backgroundColor: location.pathname.startsWith('/bag') ? '#E9EFF9': null,
                     }}
                     >
-                        <LocalMallOutlinedIcon 
-                        className={classes.navIcon}
-                        style={{
-                            color: location.pathname.startsWith('/bag') ? theme.palette.primary.main: null,
-                        }}
-                        />
+                        <Badge
+                        badgeContent={bagProducts.length}
+                        color="secondary"
+                        className={classes.badge}
+                        >
+                            <LocalMallOutlinedIcon 
+                            className={classes.navIcon}
+                            style={{
+                                color: location.pathname.startsWith('/bag') ? theme.palette.primary.main: null,
+                            }}
+                            />
+                        </Badge>
                         <Typography
                         variant="body1"
                         className={classes.linkDescription}
@@ -247,6 +260,6 @@ const StoreTitle = ({
 }
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
 )(StoreTitle);

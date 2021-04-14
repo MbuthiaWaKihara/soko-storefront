@@ -1,5 +1,7 @@
 import React from 'react';
 
+import toast from 'react-hot-toast';
+
 //router
 import { useHistory } from 'react-router-dom'
 
@@ -13,7 +15,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 //redux
 import { connect } from 'react-redux';
-import { setSelectedProduct } from '../redux';
+import { setSelectedProduct, addProductToBag } from '../redux';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -89,13 +91,17 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const mapStateToProps = state => ({
+    bagProducts: state.bag.products,
+})
 
 const mapDispatchToProps = dispatch => ({
     setSelectedProduct: product => dispatch(setSelectedProduct(product)),
+    addProductToBag: product => dispatch(addProductToBag(product)),
 });
 
 const ProductSummary = ({
-    product, openProductBackdrop, setSelectedProduct,
+    product, openProductBackdrop, setSelectedProduct, addProductToBag, bagProducts
 }) => {
     
     const classes = useStyles();
@@ -109,6 +115,22 @@ const ProductSummary = ({
     const seeMore = () => {
         setSelectedProduct(product);
         history.push(`/products/${product.id}`);
+    }
+
+    const isProductInBag = () => {
+        let productIsInBag = false;
+        bagProducts.forEach(productInBag => {
+            if(productInBag.id === product.id){
+                productIsInBag = true;
+            }
+        });
+
+        return productIsInBag;
+    }
+
+    const clickOnAdd = () => {
+        addProductToBag(product);
+        toast.success(`${product.name} added to bag`);
     }
 
     return (
@@ -171,8 +193,14 @@ const ProductSummary = ({
                     <Button
                     className={classes.addButton}
                     variant="outlined"
+                    onClick={clickOnAdd}
+                    disabled={isProductInBag()}
                     >
-                        <AddIcon /> Add
+                        {
+                            !isProductInBag() ?
+                            <><AddIcon /> Add</>  :
+                            `already in bag`
+                        }
                     </Button>
                 </div>
             </div>
@@ -181,6 +209,6 @@ const ProductSummary = ({
 }
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
 )(ProductSummary);

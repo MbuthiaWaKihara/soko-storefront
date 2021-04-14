@@ -15,6 +15,8 @@ import { connect } from 'react-redux';
 //components
 import TitleWithBackIcon from '../components/TitleWithBackIcon';
 import EmptyBag from '../components/EmptyBag';
+import ProductInBag from '../components/ProductInBag';
+import BagSummary from '../components/BagSummary';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -35,6 +37,19 @@ const useStyles = makeStyles(theme => ({
     backToHomeButton: {
         backgroundColor: theme.palette.secondary.light,
         color: theme.palette.primary.main,
+    },
+    checkoutContainer: {
+        display: 'flex',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '5%',
+        marginBottom: '5%',
+    },
+    checkoutButton: {
+        backgroundColor: theme.palette.secondary.light,
+        color: theme.palette.primary.main,
+        width: '60%',
     }
 }));
 
@@ -97,6 +112,25 @@ const Bag = ({
                         </div>
                     </> :
                     <>
+                        {
+                            bagProducts.map(product => (
+                                <ProductInBag
+                                key={product.id}
+                                product={product}
+                                />
+                            ))
+                        }
+                        <BagSummary />
+                        <div
+                        className={classes.checkoutContainer}
+                        >
+                            <Button
+                            variant="contained"
+                            className={classes.checkoutButton}
+                            >
+                                checkout
+                            </Button>
+                        </div>
                     </>
                 }
             </Grid>

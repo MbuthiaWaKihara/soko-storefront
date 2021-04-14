@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SwipeableViews from 'react-swipeable-views';
+import toast from 'react-hot-toast';
 
 //MUI
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -14,6 +15,7 @@ import Button from '@material-ui/core/Button';
 
 //redux
 import { connect } from 'react-redux';
+import { addProductToBag } from '../redux';
 
 const useStyles = makeStyles(theme => ({
     backdrop: {
@@ -101,17 +103,40 @@ const useStyles = makeStyles(theme => ({
 const mapStateToProps = state => ({
     category: state.store.selectedCategory,
     product: state.store.selectedProduct,
-})
+    bagProducts: state.bag.products,
+});
+
+const mapDispatchToProps = dispatch => ({
+    addProductToBag: product => dispatch(addProductToBag(product)),
+});
 
 const ProductBackdrop = ({
     open,
     onClick,
     category,
     product,
+    bagProducts,
+    addProductToBag,
 }) => {
 
     const classes = useStyles();
     const productImages = [...product.images, ...product.images];
+
+    const isProductInBag = () => {
+        let productIsInBag = false;
+        bagProducts.forEach(productInBag => {
+            if(productInBag.id === product.id){
+                productIsInBag = true;
+            }
+        });
+
+        return productIsInBag;
+    }
+
+    const clickAddProduct = () => {
+        addProductToBag(product);
+        toast.success(`${product.name} added to bag`);
+    }
 
     return (
         <>
@@ -197,8 +222,13 @@ const ProductBackdrop = ({
                         <Button
                         variant="outlined"
                         className={classes.addToBagButton}
+                        disabled={isProductInBag()}
+                        onClick={clickAddProduct}
                         >
-                            Add to bag
+                            {
+                                isProductInBag() ?
+                                `already in bag`: `add to bag`
+                            }
                         </Button>
                         <Button
                         variant="contained"
@@ -215,4 +245,5 @@ const ProductBackdrop = ({
 
 export default connect(
     mapStateToProps,
+    mapDispatchToProps,
 )(ProductBackdrop);

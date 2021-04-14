@@ -11,11 +11,15 @@ import { useHistory, useLocation } from 'react-router-dom';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import Badge from '@material-ui/core/Badge';
 
 //MUI icons
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+
+//redux
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,7 +37,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const BottomNav = () => {
+const mapStateToProps = state => ({
+    bagProducts: state.bag.products,
+})
+
+const BottomNav = ({
+    bagProducts
+}) => {
     const classes = useStyles();
     const location = useLocation();
     const history = useHistory();
@@ -69,11 +79,20 @@ const BottomNav = () => {
         <>
             <BottomNavigation value={activeTab} onChange={handleChange} className={classes.root}>
                 <BottomNavigationAction label="Home" value="home" icon={<HomeOutlinedIcon className={classes.icon}/>} />
-                <BottomNavigationAction label="Bag" value="bag" icon={<LocalMallOutlinedIcon className={classes.icon}/>} />
+                <BottomNavigationAction label="Bag" value="bag" icon={
+                    <Badge
+                    badgeContent={bagProducts.length}
+                    color="secondary"
+                    >
+                        <LocalMallOutlinedIcon className={classes.icon}/>
+                    </Badge>
+                } />
                 <BottomNavigationAction label="Account" value="account" icon={<AccountCircleOutlinedIcon className={classes.icon}/>} />
             </BottomNavigation>
         </>
     )
 }
 
-export default BottomNav;
+export default connect(
+    mapStateToProps,
+)(BottomNav);

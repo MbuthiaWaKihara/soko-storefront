@@ -2,6 +2,7 @@ import React from 'react';
 
 import SwipeableViews from 'react-swipeable-views';
 import { loremIpsum } from 'lorem-ipsum';
+import toast from 'react-hot-toast';
 
 //MUI
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -9,7 +10,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+//redux
 import { connect } from 'react-redux';
+import { addProductToBag } from '../redux';
 
 const useStyles = makeStyles(theme => ({
     contentContainer: {
@@ -73,14 +76,37 @@ const useStyles = makeStyles(theme => ({
 
 const mapStateToProps = state => ({
     selectedProduct: state.store.selectedProduct,
+    bagProducts: state.bag.products,
+});
+
+const mapDispatchToProps = dispatch => ({
+    addProductToBag: product => dispatch(addProductToBag(product)),
 })
 
 const ProductDetails = ({
     selectedProduct,
+    addProductToBag,
+    bagProducts,
 }) => {
 
     const classes = useStyles();
     const productImages = [...selectedProduct.images, ...selectedProduct.images];
+
+    const isProductInBag = () => {
+        let productIsInBag = false;
+        bagProducts.forEach(productInBag => {
+            if(productInBag.id === selectedProduct.id){
+                productIsInBag = true;
+            }
+        });
+
+        return productIsInBag;
+    }
+
+    const clickAddProduct = () => {
+        addProductToBag(selectedProduct);
+        toast.success(`${selectedProduct.name} added to bag`);
+    }
 
     return (
         <>
@@ -163,8 +189,13 @@ const ProductDetails = ({
                         <Button
                         variant="outlined"
                         className={classes.addToBagButton}
+                        disabled={isProductInBag()}
+                        onClick={clickAddProduct}
                         >
-                            Add to bag
+                            {
+                                isProductInBag() ?
+                                `already in bag`: `add to bag`
+                            }
                         </Button>
                         <Button
                         variant="contained"
@@ -181,4 +212,5 @@ const ProductDetails = ({
 
 export default connect(
     mapStateToProps,
+    mapDispatchToProps,
 )(ProductDetails);
