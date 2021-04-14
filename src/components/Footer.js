@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
     iconText: {
         marginTop: 5,
         color: theme.palette.primary.contrastText,
+        textAlign: 'center',
     },
     storeDetails: {
         padding: '2.5%',
@@ -96,7 +97,8 @@ const Footer = () => {
                     <Typography
                     variant="body2"
                     className={classes.iconText}
-                    >Fast Delivery</Typography>
+                    >Fast Delivery
+                    </Typography>
                 </div>
                 <div
                 className={classes.iconContainer}

@@ -26,9 +26,10 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'row',
         overflowX: 'scroll',
-        scrollbarColor: '#f1f1f1 #555',
-        scrollbarWidth: 'thin',
-        scrollbarTrackColor: '#ffffff',
+        scrollbarWidth: 'none',
+        '&::-webkit-scrollbar' : {
+            display: 'none',
+        },
     },
     relatedProductContainer: {
         marginLeft: 5,

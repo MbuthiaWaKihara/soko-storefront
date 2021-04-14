@@ -10,6 +10,11 @@ import Grid from '@material-ui/core/Grid';
 import ListViewCategories from '../components/ListViewCategories';
 import GridViewCategories from '../components/GridViewCategories';
 import ProductsInCategory from '../components/ProductsInCategory';
+import EmptyBag from '../components/EmptyBag';
+import TitleWithCount from '../components/TitleWithCount';
+
+//redux
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,13 +31,20 @@ const useStyles = makeStyles(theme => ({
     },
     bagPreviewContainer: {
         borderTop: `1px solid ${theme.palette.divider}`,
+        padding: '1%',
         [theme.breakpoints.down('md')]: {
             display: 'none',
         }
     }
 }));
 
-const Home = () => {
+const mapStateToProps = state => ({
+    bagProducts: state.bag.products,
+})
+
+const Home = ({
+    bagProducts,
+}) => {
     const classes = useStyles();
     const theme = useTheme();
     const match = useMediaQuery(theme.breakpoints.down('md'));
@@ -79,11 +91,21 @@ const Home = () => {
                 xs={12}
                 className={classes.bagPreviewContainer}
                 >
-                    <p>bag preview here</p>
+                    <TitleWithCount
+                    title="Bag"
+                    count={bagProducts.length}
+                    />
+                    {
+                        bagProducts.length === 0 ? 
+                        <EmptyBag /> :
+                        <></>
+                    }
                 </Grid>
             </Grid> 
         </>
     )
 }
 
-export default Home;
+export default connect(
+    mapStateToProps,
+)(Home);

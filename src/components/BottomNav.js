@@ -40,6 +40,19 @@ const BottomNav = () => {
 
     const [activeTab, setActiveTab] = React.useState('home');
 
+    //listen to changes in location, and change active tab
+    React.useEffect(() => {
+        if(location.pathname === '/') {
+            setActiveTab('home');
+        }
+        if(location.pathname.startsWith('/bag')) {
+            setActiveTab('bag');
+        }
+        if(location.pathname.startsWith('/account')) {
+            setActiveTab('account');
+        }
+    }, [location.pathname]);
+
     const handleChange = (_, value) => {
         setActiveTab(value);
         if(value === 'home' && location.pathname !== '') {

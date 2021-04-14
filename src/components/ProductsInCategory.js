@@ -2,7 +2,7 @@ import React from 'react';
 
 // MUI
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 
 //redux
 import { connect } from 'react-redux';
@@ -12,19 +12,9 @@ import { fetchProductsInCategory } from '../redux';
 import ProductSummary from './ProductSummary';
 import ProductBackdrop from './ProductBackdrop';
 import SearchInput from './SearchInput';
+import TitleWithCount from './TitleWithCount';
 
 const useStyles = makeStyles(theme => ({
-    categoryTitle: {
-        display: 'flex',
-        flexDirection: 'row',
-    },
-    productsNumber: {
-        color: theme.palette.primary.contrastText,
-        backgroundColor: theme.palette.primary.main,
-        padding: '.3em',
-        marginLeft: '1%',
-        borderRadius: 5,
-    },
     productsContainer: {
         width: '100%',
         // maxHeight: window.innerHeight,
@@ -68,21 +58,10 @@ const ProductsInCategory = ({
     return (
         <>
             <SearchInput />
-            <div
-            className={classes.categoryTitle}
-            >
-                <Typography
-                variant="h6"
-                className={classes.categoryName}
-                >
-                    {selectedCategory.name}
-                </Typography>
-                <Typography
-                className={classes.productsNumber}
-                >
-                    {selectedCategory.products.length}
-                </Typography>
-            </div>
+            <TitleWithCount
+            title={selectedCategory.name}
+            count={selectedCategory.products.length}
+            />
             <div
             className={classes.productsContainer}
             >

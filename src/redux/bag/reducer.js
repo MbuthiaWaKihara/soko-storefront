@@ -1,5 +1,7 @@
 const initialState = {
     products: [],
+    itemTotal: 0,
+    delivery: 300,
 }
 
 const bagReducer = (state=initialState, action) => {
