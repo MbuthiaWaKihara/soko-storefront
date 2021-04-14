@@ -20,6 +20,9 @@ import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { setSelectedProduct } from '../redux';
 
+//components
+import RelatedProducts from '../components/RelatedProducts';
+
 const useStyles = makeStyles(theme => ({
     root: {
         marginTop: '1%',
@@ -95,40 +98,6 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.secondary.contrastText,
         marginTop: 10,
     },
-    relatedProductsContainer: {
-        width: '100%',
-        marginTop: 10,
-        marginBottom: 10,
-    },
-    relatedProductsText: {
-        color: theme.palette.divider,
-        marginLeft: 5,
-    },
-    relatedProductsImages: {
-        marginTop: 10,
-        display: 'flex',
-        flexDirection: 'row',
-        overflowX: 'scroll',
-        scrollbarColor: '#f1f1f1 #555',
-        scrollbarWidth: 'thin',
-        scrollbarTrackColor: '#ffffff',
-    },
-    relatedProductContainer: {
-        marginLeft: 5,
-        marginRight: 5,
-    },
-    relatedProductImage: {
-        width: '10em',
-        height: '10em',
-        objectFit: 'cover',
-        cursor: 'pointer',
-        borderRadius: 10,
-    },
-    relatedProductName: {
-        fontWeight: 'bold',
-        width: '10em',
-        textAlign: 'center',
-    }
 }));
 
 const mapStateToProps = state => ({
@@ -149,16 +118,8 @@ const Product = ({
 
     const productImages = [...selectedProduct.images, ...selectedProduct.images];
 
-    const relatedProducts = selectedCategory.products.filter(product => product.id !== selectedProduct.id);
-    console.log(relatedProducts);
-
     const goBack = () => {
         history.push('/');
-    }
-
-    const selectProduct = product => {
-        setSelectedProduct(product);
-        history.push(`/products/${product.id}`);
     }
 
     return (
@@ -239,7 +200,7 @@ const Product = ({
                             className={classes.productDescription}
                             >
                                 {loremIpsum({
-                                    count: 2,
+                                    count: 3,
                                 })}
                             </Typography>
                             <div
@@ -287,40 +248,7 @@ const Product = ({
                             </div>
                         </Grid>
                     </Grid>
-                    <div
-                    className={classes.relatedProductsContainer}
-                    >
-                        <Typography
-                        className={classes.relatedProductsText}
-                        variant="body1"
-                        >
-                            RELATED PRODUCTS
-                        </Typography>
-                        <div
-                        className={classes.relatedProductsImages}
-                        >
-                            {
-                                relatedProducts.map(product => (
-                                   <div
-                                   className={classes.relatedProductContainer}
-                                   >
-                                       <img
-                                       src={product.images[0]}
-                                       alt="product"
-                                       className={classes.relatedProductImage}
-                                       onClick={() => selectProduct(product)}
-                                       />
-                                       <Typography
-                                       variant="body2"
-                                       className={classes.relatedProductName}
-                                       >
-                                           {product.name}
-                                       </Typography>
-                                   </div>
-                                ))
-                            }
-                        </div>
-                    </div>
+                    <RelatedProducts />
                 </Grid>
                 <Grid
                 item
