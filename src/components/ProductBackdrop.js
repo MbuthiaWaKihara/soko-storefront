@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
         zIndex: theme.zIndex.drawer + 1,
     },
     container: {
-        height: '60%',
+        height: '70%',
         width: '90%',
         [theme.breakpoints.up('lg')]: {
             width: '30%',
